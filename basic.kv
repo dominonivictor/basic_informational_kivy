@@ -1,0 +1,170 @@
+#:import lorem lorem.lorem_ipsum
+TheScreenManager:
+    HomeScreen:
+    AboutMeScreen:
+
+# <SideBar>:
+#     id: sidebar
+#     name: 'sidebar'
+#     BoxLayout:
+#         orientation: 'vertical'
+#         size: int(self.width / 5), self.parent.height
+#         pos: int(self.width *(4/5)), self.y
+#         canvas:
+#             Color:
+#                 rgba: 0, 0, 1, 1
+#             Rectangle:
+#                 pos: self.pos
+#                 size: self.size
+#         Label:
+#             id: home_label
+#             text: 'Home Screen'
+#             font_size: 30
+#             pos: self.parent.center
+
+#             canvas:
+#                 Color:
+#                     rgba: 1, 0, 0, 1
+
+# <ScrollabelLabel>:
+#     name: 'scroll_text'
+#     text: str(lorem)
+#     Label:
+#         text: root.text
+#         font_size: 20
+#         text_size: self.width, (self.parent.height//5)*4 - self.parent.height
+#         size_hint_y: None
+#         height: self.texture_size[1]
+
+<HomeScreen>:
+    name: 'home'
+    FloatLayout:
+        orientation: 'horizontal'
+        pos: root.pos
+        size: root.size
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: None
+            size: (self.parent.width//6)*5, self.parent.height
+            BoxLayout:
+                size_hint_y: None
+                pos: self.x, self.parent.y + (self.parent.height//5)*4
+                size: self.width, self.parent.height//5
+                canvas:
+                    Color:
+                        rgba: 1, 0, 0, 0.5
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Label:    
+                    text: 'Home Page!'
+                    font_size: 75    
+                    
+            BoxLayout:
+                size_hint_y: None
+                size: self.width, (self.parent.height//5)*4
+                ScrollabelLabel:
+                    Label:
+                        canvas:
+                            Color:
+                                rgba: 0, 0, 1, 0.5
+                            Rectangle:
+                                pos: self.parent.width//8, self.y
+                                size: (self.parent.width//4)*3, self.height
+                        size: (self.parent.width//4)*3, (self.parent.height//4)*3
+                        size_hint_y: None
+                        text: lorem
+                        font_size: 20
+                        text_size: (self.parent.width//4)*3, None
+                        height: self.texture_size[1]
+        BoxLayout:
+            orientation: 'vertical'
+            pos: (self.parent.width//6)*5, self.y
+            size: self.parent.width//6, self.parent.height
+            padding: 0, 0, 0, (self.parent.height//6)*4
+            canvas:
+                Color:
+                    rgba: 0, 1, 0, 0.5
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Button:
+                text: 'Home'
+                size_hint_y: None
+                text_size: self.parent.width, self.height
+                font_size: 25
+                on_release: app.root.current = 'home'
+            Button:
+                size_hint_y: None
+                height: self.parent.height//6
+                text: 'About Me'
+                text_size: self.parent.width, self.height
+                font_size: 25
+                on_release: app.root.current = 'about_me'
+                
+
+<AboutMeScreen>:
+    name: 'about_me'
+    FloatLayout:
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: None
+            size: (self.parent.width//6)*5, self.parent.height
+            BoxLayout:
+                size_hint_y: None
+                pos: self.x, self.parent.y + (self.parent.height//5)*4
+                size: self.width, self.parent.height//5
+                canvas:
+                    Color:
+                        rgba: 1, 0, 0, 0.5
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Label:    
+                    text: 'About ME!'
+                    font_size: 75    
+                    
+            BoxLayout:
+                size_hint_y: None
+                size: self.width, (self.parent.height//5)*4
+                ScrollabelLabel:
+                    Label:
+                        canvas:
+                            Color:
+                                rgba: 0, 0, 1, 0.5
+                            Rectangle:
+                                pos: self.parent.width//8, self.y
+                                size: (self.parent.width//4)*3, self.height
+                        size: (self.parent.width//4)*3, (self.parent.height//4)*3
+                        size_hint_y: None
+                        text: "Just some stuff about myself ;)"
+                        font_size: 20
+                        text_size: (self.parent.width//4)*3, None
+                        height: self.texture_size[1]
+
+        BoxLayout:
+            orientation: 'vertical'
+            pos: (self.parent.width//6)*5, self.y
+            canvas:
+                Color:
+                    rgba: 0, 1, 0, 0.5
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Button:
+                size_hint_y: None
+                size: self.width, self.parent.height//6
+                pos: self.x, (self.parent.height//6)*5
+                text: 'Home'
+                text_size: self.width, self.height
+                font_size: 25
+                on_release: app.root.current = 'home'
+            Button:
+                size_hint_y: None
+                size: self.width, self.parent.height//6
+                pos: self.x, (self.parent.height//6)*4
+                text: 'About Me'
+                text_size: self.width, self.height
+                font_size: 25
+                on_release: app.root.current = 'about_me'
+            Widget:
